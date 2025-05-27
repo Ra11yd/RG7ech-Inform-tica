@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RG7ech - Soluções e Cursos em Informática</title>
+  <link rel="icon" href="LogoRGTechnology.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+  background: url('chuva.png') repeat;
+  background-color: #0f1a2c;
+  color: #eee;
+  padding-top: 60px; /* altura do menu fixo */
+}
+
+    header {
+      background-color: #greenyellow;
+      color: whitesmoke;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      width: 100px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #00FA9A;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+  flex-wrap: wrap;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+    nav a {
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1581090700227-1e8e1533118f') no-repeat center/cover;
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      color: #66ccff;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1e2e3e;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 40px 0;
+    }
+
+    .swiper-slide {
+      background: #1e2e3e;
+      border-radius: 8px;
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    footer {
+      background-color: #00FA9A;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer img {
+      width: 80px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .social-icons i {
+      font-size: 24px;
+      margin: 0 10px;
+      color: white;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 24px;
+      z-index: 1000;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      margin-top: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+   form input, form textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  resize: none;
+  opacity: 2.0; /* Aqui controla a transparência */
+  background-color: rgba(255, 255, 255, 0.1); /* opcional: fundo semi-transparente */
+  color: white; /* para manter o texto visível */
+}
+form input:focus, form textarea:focus {
+  opacity: 1;
+  outline: 2px solid #66ccff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+    form button {
+      background-color: #66ccff;
+      color: #000;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav.active {
+        display: flex;
+      }
+    }
+    .card a {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #00ff99;
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.card a:hover {
+  background-color: #00cc7a;
+}
+.depoimento-img {
+  display: block;
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto 30px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 2px solid #66ccff;
+  transition: transform 0.3s ease;
+}
+
+.depoimento-img:hover {
+  transform: scale(1.05);
+}
+.texto-contato {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #ccc;
+}
+
+section img {
+       width: 80px;
+  height: auto;
+  margin: 0 auto 10px auto;
+  display: block;
+    }
+
+.destaque-verde {
+  border: 2px solid #00ff99;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(0, 255, 153, 0.05);
+  color: #00ff99;
+  font-size: 1.4em;
+  text-align: center;
+  margin: 20px auto;
+  display: block;
+  max-width: fit-content;
+  animation: brilho 2s infinite alternate;
+}
+
+
+@keyframes brilho {
+  from {
+    box-shadow: 0 0 5px #00ff99;
+  }
+  to {
+    box-shadow: 0 0 15px #00ff99;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="LogoRGTechnology.png" alt="Logo RG Technology">
+    <h1>RG7ech Informática - Soluções em Informática</h1>
+    <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <i class="fas fa-bars"></i>
+    </button>
+  </header>
+
+  <nav>
+    <a href="https://rg7ech.netlify.app" target="_blank">RG7ech</a>
+    <a href="#">Início</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+  </nav>
+<section class="section" id="servicos">
+<section id="servicos">
+  <h2 class="destaque-verde">Serviços de Manutenção</h2>
+</section>
+    <div class="cards">
+      <div class="card">
+        <img src="Montagem e manutenção.jpg" alt="Montagem de Computadores">
+        <h3>Montagem de Computadores</h3>
+        <p>Montamos seu PC sob medida, com os melhores componentes para jogos, trabalho ou estudo.</p>
+      </div>
+      <div class="card">
+        <img src="preventiva.jpg" alt="Manutenção Preventiva">
+        <h3>Manutenção Preventiva</h3>
+        <p>Evite problemas com uma limpeza e verificação completa do seu equipamento.</p>
+      </div>
+      <div class="card">
+        <img src="upgrade.webp" alt="Upgrade de Sistemas">
+        <h3>Upgrade de Sistemas</h3>
+        <p>Melhore o desempenho do seu computador com atualizações de hardware e software.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+ <h2 class="destaque-verde">Fale Conosco</h2>
+        <img src="LogoRGTechnology.png" alt="Logo RG Technology">
+    <p class="texto-contato">Tem dúvidas, sugestões ou deseja mais informações? Preencha o formulário abaixo e fale com a nossa equipe!</p>
+    <form id="form-contato">
+      <input type="text" id="nome" placeholder="Seu nome" required>
+      <input type="email" id="email" placeholder="Seu e-mail" required>
+      <textarea id="mensagem" placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <a href="https://wa.me/5524998706460" class="whatsapp-button" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <footer>
+    <img src="LogoRGTechnology.png" alt="Logo RG Technology">
+    <p>Siga-nos:</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/rg7ech/"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/rg7ech/?lipi=urn%3Ali%3Apage%3Ad_flagship3_search_srp_all%3B2oqKnsOyR0aaRDWg9TcKkw%3D%3D"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.0764336169095!2d-44.11566982470145!3d-22.501315279542588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9e981851b5c2c3%3A0x305928aa6e50811c!2sAv.%20Retiro%2C%202566%20-%20Retiro%2C%20Volta%20Redonda%20-%20RJ%2C%2027275-263!5e0!3m2!1spt-BR!2sbr!4v1748286960125!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <p>&copy; 2025 RG7ech. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+      },
+    });
+
+    document.getElementById("form-contato").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const mensagem = document.getElementById("mensagem").value;
+      const numeroWhatsApp = "5524998706460";
+      const texto = `Olá, me chamo ${nome}%0AEmail: ${email}%0AMensagem: ${mensagem}`;
+      const link = `https://wa.me/${numeroWhatsApp}?text=${texto}`;
+      window.open(link, '_blank');
+    });
+  </script>
+</body>
+</html>
